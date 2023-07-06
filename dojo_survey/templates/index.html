@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="container text-center bg-light mx-auto col-6 mt-5 p-4 border border-dark">
+        <form action="/process" method="post">
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="form-group row">
+                <label for="name" class="col-sm-3 col-form-label">Your Name: </label>
+                <input type="text" name="name">
+            </div>
+            <!-- <div class="form-group row">
+                <legend class="col-sm-3 col-form-label">Gender: </legend>
+                <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked>
+                    <label class="form-check-label" for="male"> Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                    <label class="form-check-label" for="female"> Female</label>
+                </div>
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <label for="location" class="col-sm-3 col-form-label">Dojo location: </label>
+                <select name="location" id="location">
+                    <option selected>Choose a location</option>
+                    <option value="USA">USA</option>
+                    <option value="AFICA">Africa</option>
+                    <option value="ASIA">Asia</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label for="language" class="col-sm-3 col-form-label">Favorite Languages: </label>
+                <select name="language" id="language">
+                    <option selected>Choose a language</option>
+                    <option value="PYTHON">PYTHON</option>
+                    <option value="JAVA">JAVA</option>
+                    <option value="C#">C#</option>
+                </select>               
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-3 col-form-label">Comment: </label>
+                <textarea name="comment" rows="4" cols="50"></textarea>
+            </div>
+            <!-- <div class="form-check">
+                <input type="checkbox" value="" id="Check" checked>
+                <label>Agree to terms and conditions</label>
+            </div> -->
+            <input type="submit" value="Submit" class="btn btn-primary btn-lg">
+        </form>
+    </div>
+</body>
+</html>
